@@ -1,0 +1,8 @@
+com\example\locadora\SecureModeSmokeTests.class
+com\example\locadora\VulnerabilityTests$StackTraceExposureTests.class
+com\example\locadora\VulnerabilityTests.class
+com\example\locadora\VulnerabilityTests$SqlInjectionTests.class
+com\example\locadora\VulnerabilityTests$IdValidationFailureTests.class
+com\example\locadora\VulnerabilityTests$XssStoredTests.class
+com\example\locadora\VulnerabilityTests$NoInputValidationTests.class
+com\example\locadora\VulnerabilityTests$WeakAccessControlTests.class
