@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locadora de Video Games - Painel Web</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<header>
+    <h1>Locadora de Video Games</h1>
+    <p>Interface didática para testar os endpoints REST em modo seguro ou vulnerável.</p>
+</header>
+<main>
+    <section class="card">
+        <h2>Autenticação & Segurança</h2>
+        <div class="grid">
+            <form id="formCreateUser" class="panel">
+                <h3>Cadastro de Usuário</h3>
+                <label>Username<input name="username" required></label>
+                <label>Senha<input name="senha" type="password" required></label>
+                <label>Nome<input name="nome" required></label>
+                <label>E-mail<input name="email" type="email"></label>
+                <label>Perfil
+                    <select name="role">
+                        <option value="ADMIN">ADMIN</option>
+                        <option value="ATENDENTE">ATENDENTE</option>
+                    </select>
+                </label>
+                <button type="submit">Criar usuário</button>
+            </form>
+            <form id="formLogin" class="panel">
+                <h3>Login</h3>
+                <label>Username<input name="username" required></label>
+                <label>Senha<input name="senha" type="password" required></label>
+                <button type="submit">Autenticar</button>
+                <p>Token atual: <span id="currentToken">—</span></p>
+                <button type="button" id="btnLimparToken" class="ghost">Limpar token</button>
+            </form>
+        </div>
+        <div class="panel">
+            <h3>Modo vulnerável</h3>
+            <label><input type="checkbox" id="bypassToggle"> Enviar cabeçalho X-Bypass-Auth</label>
+            <label>Valor do cabeçalho<input id="bypassValue" placeholder="ex.: hacker"></label>
+            <small>Use apenas em laboratório com <code>app.security.mode=INSECURE</code>.</small>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Jogos</h2>
+        <div class="grid">
+            <form id="formCreateJogo" class="panel">
+                <h3>Novo jogo</h3>
+                <label>Título<input name="titulo" required></label>
+                <label>Gênero<input name="genero"></label>
+                <label>Preço diária<input name="precoDiaria" type="number" step="0.01" required></label>
+                <label>Descrição<textarea name="descricao"></textarea></label>
+                <button type="submit">Salvar</button>
+            </form>
+            <form id="formUpdateJogo" class="panel">
+                <h3>Atualizar jogo</h3>
+                <label>ID<input name="id" type="number" required></label>
+                <label>Título<input name="titulo" required></label>
+                <label>Gênero<input name="genero"></label>
+                <label>Preço diária<input name="precoDiaria" type="number" step="0.01" required></label>
+                <label>Descrição<textarea name="descricao"></textarea></label>
+                <button type="submit">Atualizar</button>
+            </form>
+            <form id="formDeleteJogo" class="panel">
+                <h3>Remover jogo</h3>
+                <label>ID<input name="id" type="number" required></label>
+                <button type="submit" class="danger">Excluir</button>
+            </form>
+        </div>
+        <button id="btnListarJogos">Listar jogos</button>
+        <pre id="jogosSaida" class="output"></pre>
+    </section>
+
+    <section class="card">
+        <h2>Clientes</h2>
+        <div class="grid">
+            <form id="formCreateCliente" class="panel">
+                <h3>Novo cliente</h3>
+                <label>Nome<input name="nome" required></label>
+                <label>E-mail<input name="email" type="email" required></label>
+                <label>Documento<input name="documento" required></label>
+                <label>Telefone<input name="telefone" required></label>
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+        <button id="btnListarClientes">Listar clientes</button>
+        <pre id="clientesSaida" class="output"></pre>
+    </section>
+
+    <section class="card">
+        <h2>Locações</h2>
+        <div class="grid">
+            <form id="formCreateLocacao" class="panel">
+                <h3>Nova locação</h3>
+                <label>ID Cliente<input name="clienteId" type="number" required></label>
+                <label>ID Jogo<input name="jogoId" type="number" required></label>
+                <label>Dias<input name="dias" type="number" min="1" required></label>
+                <button type="submit">Registrar</button>
+            </form>
+            <form id="formDevolucao" class="panel">
+                <h3>Devolução</h3>
+                <label>ID Locação<input name="id" type="number" required></label>
+                <label>Data devolução<input name="data" type="date" required></label>
+                <button type="submit">Confirmar devolução</button>
+            </form>
+        </div>
+        <button id="btnListarLocacoes">Listar locações</button>
+        <pre id="locacoesSaida" class="output"></pre>
+    </section>
+
+    <section class="card">
+        <h2>Console da API</h2>
+        <pre id="consoleSaida" class="output"></pre>
+    </section>
+</main>
+<script src="/assets/app.js"></script>
+</body>
+</html>
