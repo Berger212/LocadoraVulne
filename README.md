@@ -68,7 +68,7 @@ frontend (Aplicação Web)
 npm run dev
 ```
 
-A aplicação sobe em `http://localhost:8080`.
+A aplicação sobe em `http://localhost:8081`.
 
 ## Interface Web
 
